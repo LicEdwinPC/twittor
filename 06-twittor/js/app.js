@@ -2,10 +2,11 @@ var url = window.location.href;
 var swLocation = 'twittor/sw.js';
 if (navigator.serviceWorker) {
 
-    if (url.includes('licedwinpc.github.io')) {
+    if (url.includes('localhost')) {
         swLocation = '/06-twittor/sw.js';
 
     }
+    console.log(swLocation);
     navigator.serviceWorker.register(swLocation);
 }
 

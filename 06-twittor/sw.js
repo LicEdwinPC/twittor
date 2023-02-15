@@ -2,7 +2,7 @@
 importScripts('../06-twittor/js/sw-utils.js');
 
 const STATIC_CACHE = "static-v2";
-const DYNAMIC_CACHE = "dynamic-v1";
+const DYNAMIC_CACHE = "dynamic-v2";
 const INMUTABLE_CACHE = "inmutable-v1";
 
 const APP_SHELL = [
@@ -64,7 +64,12 @@ self.addEventListener('activate', e => {
                 return caches.delete(key);
             }
 
+            if (key !== DYNAMIC_CACHE && key.includes('dynamic')) {
+                return caches.delete(key);
+            }
+
         });
+        e.waitUntil(respuesta);
 
     });
 
